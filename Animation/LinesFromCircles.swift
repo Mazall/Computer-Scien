@@ -113,13 +113,15 @@ class LineFromCircles: NSObject, Sketchable {
             dy2 = +1
         }
         
-        // code that draw lines between circles when overlapping
+        // code that measures distance to draw  lines between circles when overlapping
         
         let a = Double(x1 - x2)
         let b = Double(y1 - y2)
         let d = sqrt(a*a + b*b)
         print("Distance between circles is \(d)")
         
+        
+         
         if d < 100 {
             canvas.drawLine(from: Point(x: x1, y: y1), to: Point(x: x2, y: y2))
         }
