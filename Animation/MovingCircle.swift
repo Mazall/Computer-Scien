@@ -91,6 +91,7 @@ class MovingCircle {
         
         //if the sum of the radii is larger than the distance between circles draw a line
         if d < Double(self.radius + other.radius) {
+            canvas.lineColor = Color.red
             canvas.drawLine(from: Point(x: self.x, y: self.y), to: Point(x: other.x, y: other.y))
             
         }
