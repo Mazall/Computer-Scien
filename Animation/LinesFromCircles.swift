@@ -31,7 +31,7 @@ class LineFromCircles: NSObject, Sketchable {
 //        for _ in stride(from: 1, through: 2, by: 1) {
 //
 //        }
-        for _ in 1...2 {
+        for _ in 1...3 {
             
             var newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: 1, dy: -1, diameter: 200)
             
@@ -73,10 +73,10 @@ class LineFromCircles: NSObject, Sketchable {
       
         // code that measures distance to draw  lines between circles when overlapping
         circles[0].drawLineWhenOverlappingWith(other: circles[1], on: canvas)
-       
+        circles[0].drawLineWhenOverlappingWith(other: circles[2], on: canvas)
+        circles[1].drawLineWhenOverlappingWith(other: circles[2], on: canvas)
+    
     }
-    
-    
     
 }
 //mazal copyright infringed fine 90990290393920910 $$ dollas
