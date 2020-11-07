@@ -26,9 +26,21 @@ class LineFromCircles: NSObject, Sketchable {
         canvas = Canvas(width: 500, height: 500)
         
 
-        for _ in 1...20 {
+        for _ in 1...50 {
             
-            var newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: 1, dy: -1, diameter: 75)
+            // Randomly pick horizontal direction
+            var dx = 1
+            if Bool.random() == true {
+                dx *= -1
+            }
+            var dy = 1
+            if Bool.random() == true {
+                dy *= -1
+            }
+            
+            // Create new circle
+            
+            var newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 75)
             
             // Now add the new circle to the list
             circles.append(newCircle)
@@ -55,6 +67,8 @@ class LineFromCircles: NSObject, Sketchable {
         canvas.fillColor = Color.white
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 500, height: 500)
         canvas.defaultBorderWidth = 3
+        canvas.borderColor = Color.white
+    
         
         
         //    canvas.fillColor = rainbow
