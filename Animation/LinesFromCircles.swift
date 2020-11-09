@@ -16,7 +16,7 @@ class LineFromCircles: NSObject, Sketchable {
     //       Therefore, the line immediately below must always be present.
     var canvas: Canvas
     
-
+    
     var circles: [MovingCircle] = [] // Empty list (array)
     
     // This function runs once
@@ -25,8 +25,8 @@ class LineFromCircles: NSObject, Sketchable {
         // Create canvas object – specify size
         canvas = Canvas(width: 500, height: 500)
         
-
-        for _ in 1...50 {
+        
+        for _ in 1...39 {
             
             // Randomly pick horizontal direction
             var dx = 1
@@ -40,7 +40,7 @@ class LineFromCircles: NSObject, Sketchable {
             
             // Create new circle
             
-            var newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 75)
+            let newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 125, drawCircle: false)
             
             // Now add the new circle to the list
             circles.append(newCircle)
@@ -48,13 +48,13 @@ class LineFromCircles: NSObject, Sketchable {
         }
         
         
-
+        
         
         canvas.drawShapesWithBorders = true
         canvas.borderColor = Color.black
         
     }
-        
+    
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
@@ -64,11 +64,10 @@ class LineFromCircles: NSObject, Sketchable {
         //        canvas.fillColor = Color.black
         
         canvas.drawShapesWithFill = true
-        canvas.fillColor = Color.white
+        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 500, height: 500)
         canvas.defaultBorderWidth = 3
-        canvas.borderColor = Color.white
-    
+        
         
         
         //    canvas.fillColor = rainbow
@@ -77,12 +76,12 @@ class LineFromCircles: NSObject, Sketchable {
         for i in 0...circles.count - 1 {
             circles[i].update(on: canvas)
         }
-     
-     
-      
-      
-   
-
+        
+        
+        
+        
+        
+        
         for i in stride(from: 0, through: circles.count - 2, by: 1) {
             
             for j in stride(from: i + 1, through: circles.count - 1, by: 1) {

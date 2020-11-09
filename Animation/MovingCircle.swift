@@ -23,7 +23,7 @@ class MovingCircle {
     var dy: Int
     
     var diameter: Int
-    
+    var drawCircle: Bool
     // Computed property
     var radius: Int {
         return self.diameter / 2
@@ -31,7 +31,7 @@ class MovingCircle {
     
     // 2. Initializer (initialize, or "set up" the properties with a first value)
     
-    init(x: Int, y: Int, dx: Int, dy: Int, diameter: Int) {
+    init(x: Int, y: Int, dx: Int, dy: Int, diameter: Int, drawCircle: Bool) {
         
         
         // "self" refers to the properties from THIS class
@@ -44,6 +44,7 @@ class MovingCircle {
         self.dx = dx
         self.dy = dy
         self.diameter = diameter
+        self.drawCircle = drawCircle
     }
     
     // 3. Methods (make things happen)
@@ -51,18 +52,18 @@ class MovingCircle {
     func update(on canvas: Canvas){
         
         // Move the circle
-        
         x += dx
         y += dy
         
         // Set circle colors
-        
         canvas.drawShapesWithFill = false
-        canvas.fillColor = Color.white
+        canvas.borderColor = Color.white
+        canvas.defaultBorderWidth = 0
         
         // Draw the circle
-        
-        canvas.drawEllipse(at: Point(x: x, y: y), width: diameter, height: diameter)
+        if drawCircle == true {
+            canvas.drawEllipse(at: Point(x: x, y: y), width: diameter, height: diameter)
+        }
         
         // Code to make first circle bounce
         if x >= canvas.width {
@@ -78,7 +79,7 @@ class MovingCircle {
             dy = +1
         }
         
-       
+        
     }
     
     func drawLineWhenOverlappingWith(other: MovingCircle, on canvas: Canvas) {
@@ -86,12 +87,20 @@ class MovingCircle {
         let a = Double(self.x - other.x)
         let b = Double(self.y - other.y)
         let d = sqrt(a*a + b*b)
-        //          print("Distance between circles is \(d)")
+        //      print("Distance between circles is \(d)")
         
+        // Map the distance between circles to alpha
+        let alpha = map(value: d, fromLower: 40, fromUpper: Double(self.radius + other.radius), toLower: 10, toUpper: 50)
+                
         
         //if the sum of the radii is larger than the distance between circles draw a line
         if d < Double(self.radius + other.radius) {
-            canvas.lineColor = Color.red
+            let int = Int.random(in: 1...500)
+            let int2 = Int.random(in: 1...500)
+            let rainbow = Color(hue: int2, saturation: int, brightness: int, alpha: Int(alpha))
+            
+            
+            canvas.lineColor = rainbow
             canvas.drawLine(from: Point(x: self.x, y: self.y), to: Point(x: other.x, y: other.y))
             
         }
