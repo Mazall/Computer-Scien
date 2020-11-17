@@ -51,6 +51,9 @@ class MovingCircle {
     
     func update(on canvas: Canvas){
         
+        
+        
+        
         // Move the circle
         x += dx
         y += dy
@@ -82,16 +85,17 @@ class MovingCircle {
         
     }
     
+    
     func drawLineWhenOverlappingWith(other: MovingCircle, on canvas: Canvas) {
         // Distance between circles
         let a = Double(self.x - other.x)
         let b = Double(self.y - other.y)
         let d = sqrt(a*a + b*b)
-        //      print("Distance between circles is \(d)")
+        // print("Distance between circles is \(d)")
         
         // Map the distance between circles to alpha
         let alpha = map(value: d, fromLower: 40, fromUpper: Double(self.radius + other.radius), toLower: 10, toUpper: 50)
-                
+        
         
         //if the sum of the radii is larger than the distance between circles draw a line
         if d < Double(self.radius + other.radius) {
@@ -99,10 +103,16 @@ class MovingCircle {
             let int2 = Int.random(in: 1...500)
             let rainbow = Color(hue: int2, saturation: int, brightness: int, alpha: Int(alpha))
             
-            
             canvas.lineColor = rainbow
             canvas.drawLine(from: Point(x: self.x, y: self.y), to: Point(x: other.x, y: other.y))
             
+            canvas.textColor = Color(hue: int, saturation: int2, brightness: int2, alpha: Int(alpha))
+            canvas.drawText(message: "boom", at: Point(x: self.x, y: self.y), size: 10, kerning: 0)
+            
+            
+            
+            //            canvas.fillColor = Color(hue: int, saturation: int2, brightness: int, alpha: Int(alpha))
+            //            canvas.drawEllipse(at: Point(x: self.x, y: self.y), width: 30, height: 30)
         }
     }
 }

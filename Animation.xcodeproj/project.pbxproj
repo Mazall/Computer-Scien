@@ -16,6 +16,8 @@
 		755C6F4025487CC6009609EF /* skittles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C6F3F25487CC6009609EF /* skittles.swift */; };
 		75761C9A2538D77900FC8736 /* MovingSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75761C992538D77900FC8736 /* MovingSquare.swift */; };
 		75761C9D2539D93800FC8736 /* FiveCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75761C9C2539D93800FC8736 /* FiveCircles.swift */; };
+		75B934D525642F7A003DBA6A /* MathFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B934D425642F7A003DBA6A /* MathFunction.swift */; };
+		75B934D825643541003DBA6A /* FunctionArt1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B934D725643541003DBA6A /* FunctionArt1.swift */; };
 		81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A091C130A10007ED524 /* AppDelegate.swift */; };
 		81064A0C1C130A10007ED524 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81064A0B1C130A10007ED524 /* ViewController.swift */; };
 		81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81064A0D1C130A10007ED524 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		755C6F3F25487CC6009609EF /* skittles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skittles.swift; sourceTree = "<group>"; };
 		75761C992538D77900FC8736 /* MovingSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingSquare.swift; sourceTree = "<group>"; };
 		75761C9C2539D93800FC8736 /* FiveCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveCircles.swift; sourceTree = "<group>"; };
+		75B934D425642F7A003DBA6A /* MathFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathFunction.swift; sourceTree = "<group>"; };
+		75B934D725643541003DBA6A /* FunctionArt1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionArt1.swift; sourceTree = "<group>"; };
 		81064A061C130A10007ED524 /* Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81064A091C130A10007ED524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81064A0B1C130A10007ED524 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				752E892E255AF76E0061468E /* Spiral.swift */,
 				814ADAFC248EB56900F80486 /* EmptySketch.swift */,
 				752E892A25559B990061468E /* MovingCircle.swift */,
+				75B934D425642F7A003DBA6A /* MathFunction.swift */,
+				75B934D725643541003DBA6A /* FunctionArt1.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				814ADAF5248EAB6A00F80486 /* TurtleSketch.swift in Sources */,
 				7555F2E22540AAB2004C362C /* LinesFromCircles.swift in Sources */,
 				75761C9A2538D77900FC8736 /* MovingSquare.swift in Sources */,
+				75B934D525642F7A003DBA6A /* MathFunction.swift in Sources */,
 				814ADAF9248EB34900F80486 /* BasicSketch.swift in Sources */,
 				814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */,
 				7555F2DF253DC95D004C362C /* BouncingCircle.swift in Sources */,
@@ -522,6 +529,7 @@
 				755C6F4025487CC6009609EF /* skittles.swift in Sources */,
 				814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */,
 				752E8932255AFA090061468E /* IndividualSpiral.swift in Sources */,
+				75B934D825643541003DBA6A /* FunctionArt1.swift in Sources */,
 				814ADAFF248EB5E300F80486 /* StaticSketch.swift in Sources */,
 				75761C9D2539D93800FC8736 /* FiveCircles.swift in Sources */,
 			);

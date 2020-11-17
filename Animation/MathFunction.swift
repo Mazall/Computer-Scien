@@ -11,30 +11,37 @@ import CanvasGraphics
 // Define a class that creates a spiral
 // - a "class" is just a way to group data (properties) together
 //   with behaviour (things that we want to happen)
-class IndividualSpiral {
+class MathFunction {
 
     // 1. Properties
     //
     //    A property is something that describes the item.
     //    e.g.: A student at LCS has a house, a hair color, a height
     var lastPoint: Point
-    var angleOffset: Int
-    var hue: Float
-
+    var a: CGFloat      // Vertical stretch / compression / reflection
+    var k: CGFloat      // Horizontal stretch
+    var d: CGFloat      // Horizontal shift
+    var c: CGFloat      // Vertical shift
+    
     // 2. Initializer
     //
     //    An initializer has one job: give each property an initial
     //    value
-    init(angleOffset: Int, hue: Float) {
+    init(a: CGFloat,
+         k: CGFloat,
+         d: CGFloat,
+         c: CGFloat,
+         canvas: Canvas) {
         
         // I want every spiral to begin at the same position
-        self.lastPoint = Point(x: 0, y: 0)
+        self.lastPoint = Point(x: -1 * canvas.width / 2 - 5, y: 0)
         
-        // Each spiral begins at a slightly different angle
-        self.angleOffset = angleOffset
-        
-        // Set the hue
-        self.hue = hue
+        // Initialize all properties
+        self.a = a
+        self.k = k
+        self.d = d
+        self.c = c
+    
         
     }
     
@@ -48,24 +55,22 @@ class IndividualSpiral {
         // Start drawing after the first frame
         if canvas.frameCount > 0 {
 
-            // Set the radius
-            let radius = CGFloat(canvas.frameCount) / 0.5
-
-            // Set the angle equal to the frameCount
-            let angle = CGFloat(canvas.frameCount + angleOffset)
 
             // Determine the next x position
-            let nextX = cos(angle.asRadians()) * radius
+            let nextX : CGFloat = CGFloat(canvas.frameCount - canvas.width / 2)
 
             // Determine the next y position
-            let nextY = sin(angle.asRadians()) * radius
+            var nextY : CGFloat = 0.0
         
+            // Set y usuing a quadratic function
+            nextY = a * pow((nextX - d) / k, 2.0)
+            
             // Set the next point
             let nextPoint = Point(x: nextX, y: nextY)
 //            print(nextPoint)
             
             // Set the line color
-            canvas.lineColor = Color(hue: hue,
+            canvas.lineColor = Color(hue: 0,
                                      saturation: 80,
                                      brightness: 90,
                                      alpha: 100)

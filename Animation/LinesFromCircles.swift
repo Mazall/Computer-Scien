@@ -58,11 +58,6 @@ class LineFromCircles: NSObject, Sketchable {
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
-        //        var int = Int.random(in: 1...500)
-        //        var int2 = Int.random(in: 1...500)
-        //        let rainbow = Color(hue: int2, saturation: int, brightness: int, alpha: int)
-        //        canvas.fillColor = Color.black
-        
         canvas.drawShapesWithFill = true
         canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 500, height: 500)
