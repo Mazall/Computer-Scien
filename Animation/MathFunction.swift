@@ -49,7 +49,7 @@ class MathFunction {
          canvas: Canvas,
          type : FunctionType) {
         
-        // I want every spiral to begin at the same position
+        // I want every function to begin at the same position
         self.lastPoint = Point(x: -1 * canvas.width / 2 - 5, y: 0)
         
         // Initialize all properties
@@ -68,6 +68,14 @@ class MathFunction {
     // Update (or draw) the position of this spiral
     func update(on canvas: Canvas, usingInputValue x: Int) {
 
+        // Make sure each re-draw of all the functions begins off-screen
+        if x == 0 {
+            // I want every function to begin at the same position
+            self.lastPoint = Point(x: -1 * canvas.width / 2 - 5, y: 0)
+
+        }
+
+        
         // Start drawing after the first frames
         if x > 0  && x < canvas.width {
 
