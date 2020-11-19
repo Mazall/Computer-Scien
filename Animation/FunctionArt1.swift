@@ -28,11 +28,12 @@ class FunctionArt1: NSObject, Sketchable {
         for i in 1...11 {
             
             // Create the function
-            let newFunction = MathFunction(a: 1.0,
-                                           k: 2.0,
-                                           d: CGFloat(i) * 35,
+            let newFunction = MathFunction(a: 10.0,
+                                           k: 15.0,
+                                           d: CGFloat(i) * 20,
                                            c: 0,
-                                           canvas: canvas)
+                                           canvas: canvas,
+                                           type: .reciprocal)
             
             // Add it to the list
             functions.append(newFunction)
@@ -45,8 +46,8 @@ class FunctionArt1: NSObject, Sketchable {
 
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
-        canvas.fillColor = Color.black
-        canvas.drawRectangle(at: Point(x: 0, y: 0), width: 1000, height: 1000)
+        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
+    //    canvas.drawRectangle(at: Point(x: 0, y: 0), width: 1000, height: 1000)
         // What frame are we on?
 //        print(canvas.frameCount)
         
@@ -57,7 +58,8 @@ class FunctionArt1: NSObject, Sketchable {
 
         // Update the position of all functions
         for function in functions {
-            function.update(on: canvas)
+            function.update(on: canvas,
+                            usingInputValue: canvas.frameCount)
         }
 
     
