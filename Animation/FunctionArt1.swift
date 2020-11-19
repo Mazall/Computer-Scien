@@ -30,7 +30,7 @@ class FunctionArt1: NSObject, Sketchable {
             // Create the function
             let newFunction = MathFunction(a: 10.0,
                                            k: 15.0,
-                                           d: CGFloat(i) * 25,
+                                           d: CGFloat(i) * 20,
                                            c: 0,
                                            canvas: canvas,
                                            type: .reciprocal)
@@ -59,11 +59,16 @@ class FunctionArt1: NSObject, Sketchable {
         // Set the origin to be the middle of the canvas
         canvas.translate(to: Point(x: canvas.width / 2, y: canvas.height / 2))
         
-        // Update the position of all functions
-        for function in functions {
-            function.update(on: canvas,
-                            usingInputValue: canvas.frameCount)
+        // Draw the entire list of funnctions all at once
+        for x in 0...canvas.width {
+            // Update the position of all functions
+            for function in functions {
+                function.update(on: canvas,
+                                usingInputValue: x)
+            }
+            
         }
+        
         
         
     }
