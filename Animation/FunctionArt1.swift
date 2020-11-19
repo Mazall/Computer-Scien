@@ -33,7 +33,7 @@ class FunctionArt1: NSObject, Sketchable {
                                            d: CGFloat(i) * 20,
                                            c: 0,
                                            canvas: canvas,
-                                           type: .reciprocal)
+                                           type: .yoAlien)
             
             // Add it to the list
             functions.append(newFunction)
@@ -48,7 +48,7 @@ class FunctionArt1: NSObject, Sketchable {
     func draw() {
         
         // Clear the canvas
-        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 100)
+        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 20)
         //        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 1000, height: 1000)
         // What frame are we on?
@@ -59,10 +59,20 @@ class FunctionArt1: NSObject, Sketchable {
         // Set the origin to be the middle of the canvas
         canvas.translate(to: Point(x: canvas.width / 2, y: canvas.height / 2))
         
+        
+        // Randomly change the vertical position
+        let newC = Int.random(in: -150...150)
+        
+        
         // Draw the entire list of funnctions all at once
         for x in 0...canvas.width {
+            
+            
             // Update the position of all functions
             for function in functions {
+                
+                function.c = CGFloat(newC)
+                
                 function.update(on: canvas,
                                 usingInputValue: x)
             }
