@@ -28,12 +28,12 @@ class FunctionArt1: NSObject, Sketchable {
         for i in 1...11 {
             
             // Create the function
-            let newFunction = MathFunction(a: 10.0,
-                                           k: 15.0,
-                                           d: CGFloat(i) * 20,
+            let newFunction = MathFunction(a: 5.0,
+                                           k: 2.0,
+                                           d: CGFloat(i) * 5,
                                            c: 0,
                                            canvas: canvas,
-                                           type: .yoAlien)
+                                           type: .cubic)
             
             // Add it to the list
             functions.append(newFunction)
@@ -48,11 +48,10 @@ class FunctionArt1: NSObject, Sketchable {
     func draw() {
         
         // Clear the canvas
-        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 20)
-        //        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
+                   canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 100, alpha: 20)
+        //         canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 1000, height: 1000)
-        // What frame are we on?
-        //        print(canvas.frameCount)
+      
         
         canvas.defaultLineWidth = 1
         
@@ -61,7 +60,7 @@ class FunctionArt1: NSObject, Sketchable {
         
         
         // Randomly change the vertical position
-        let newC = Int.random(in: -150...150)
+//        let newC = Int.random(in: -150...150)
         
         
         // Draw the entire list of funnctions all at once
@@ -71,7 +70,10 @@ class FunctionArt1: NSObject, Sketchable {
             // Update the position of all functions
             for function in functions {
                 
-                function.c = CGFloat(newC)
+//                function.c = CGFloat(newC)
+                
+                // Gradually change the vertical stretch / compression
+                function.a = 0.25 * sin(Degrees(canvas.frameCount).asRadians() / 0.25)
                 
                 function.update(on: canvas,
                                 usingInputValue: x)
