@@ -12,7 +12,7 @@ import CanvasGraphics
 // - a "class" is just a way to group data (properties) together
 //   with behaviour (things that we want to happen)
 class IndividualSpiral {
-
+    
     // 1. Properties
     //
     //    A property is something that describes the item.
@@ -20,7 +20,8 @@ class IndividualSpiral {
     var lastPoint: Point
     var angleOffset: Int
     var hue: Float
-
+    var delayInSeconds: Int // How much of a delay to have before the animation begins
+    
     // 2. Initializer
     //
     //    An initializer has one job: give each property an initial
@@ -36,6 +37,9 @@ class IndividualSpiral {
         // Set the hue
         self.hue = hue
         
+        // Delay in seconds
+        self.delayInSeconds = 5
+        
     }
     
     // 3. Methods
@@ -44,25 +48,25 @@ class IndividualSpiral {
     
     // Update (or draw) the position of this spiral
     func update(on canvas: Canvas) {
-
-        // Start drawing after the first frame
-        if canvas.frameCount > 0 {
-
+        
+        // Only draw on the canvas after the delay in seconds has been reached
+        if canvas.frameCount > delayInSeconds * canvas.framesPerSecond {
+            
             // Set the radius
-            let radius = CGFloat(canvas.frameCount) / 0.5
-
+            let radius = CGFloat(canvas.frameCount - delayInSeconds * canvas.framesPerSecond) / 0.5
+            
             // Set the angle equal to the frameCount
             let angle = CGFloat(canvas.frameCount + angleOffset)
-
+            
             // Determine the next x position
             let nextX = cos(angle.asRadians()) * radius
-
+            
             // Determine the next y position
             let nextY = sin(angle.asRadians()) * radius
-        
+            
             // Set the next point
             let nextPoint = Point(x: nextX, y: nextY)
-//            print(nextPoint)
+            //            print(nextPoint)
             
             // Set the line color
             canvas.lineColor = Color(hue: hue,
@@ -72,14 +76,13 @@ class IndividualSpiral {
             canvas.defaultLineWidth = 10
             // Draw a line from the last point to the next point
             canvas.drawLine(from: lastPoint, to: nextPoint)
-
+            
             // Set the "new" last point, now that the line is drawn
             lastPoint = nextPoint
-
+            
+            
+            
         }
         
-
-        
     }
-    
 }

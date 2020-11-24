@@ -23,6 +23,11 @@ enum FunctionType {
     case sine
 }
 
+// Shape type
+enum ShapeType {
+    case none
+    case star
+}
 // Define a class that creates a mathematical function
 // - a "class" is just a way to group data (properties) together
 //   with behaviour (things that we want to happen)
@@ -39,6 +44,7 @@ class MathFunction {
     var c: CGFloat      // Vertical shift
     var type: FunctionType // Tell us what shape / math function to use
     var delayInSeconds: Int // How much of a delay to have before the animation begins
+    var shapeType: ShapeType // What shape to draw along the path, if any
     
     
     // 2. Initializer
@@ -51,7 +57,8 @@ class MathFunction {
          c: CGFloat,
          canvas: Canvas,
          type : FunctionType,
-         delayInSeconds: Int = 0) {
+         delayInSeconds: Int = 0,
+         shapeType: ShapeType = .none) {
         
         // I want every function to begin at the same position
         self.lastPoint = Point(x: -1 * canvas.width / 2 - 5, y: 0)
@@ -66,7 +73,7 @@ class MathFunction {
         
         // I want every function to begin at the same position
         self.lastPoint = Point(x: -1 * canvas.width / 2 - 5, y: 0)
-        
+        self.shapeType = shapeType
     }
     
     // 3. Methods
@@ -135,19 +142,50 @@ class MathFunction {
                                          alpha: 100)
                 canvas.defaultLineWidth = 10
                 // Draw a line from the last point to the next point
-                canvas.drawLine(from: lastPoint, to: nextPoint)
                 
-                // Set the "new" last point, now that the line is drawn
-                lastPoint = nextPoint
+                if shapeType == .none {
+                    
+                    // Draw a line from the last point to the next point
+                    canvas.drawLine(from: lastPoint, to: nextPoint)
+                    
+                    
+                } else if shapeType == .star {
+                  
+                    // Yellow color
+                    let int = Int.random(in: 1...500)
+                    let int2 = Int.random(in: 1...500)
+                    let rainbow = Color(hue: int2, saturation: int, brightness: 100, alpha: Int(int2))
+                    
+                    canvas.fillColor = rainbow
+                    
+                    canvas.drawShapesWithFill = true
+                    
+                    var star: [Point] = []
+                    star.append(Point(x: nextX + 0, y: nextY - 50))
+                    star.append(Point(x: nextX + 14, y: nextY - 20))
+                    star.append(Point(x: nextX + 47, y: nextY - 15))
+                    star.append(Point(x: nextX + 23, y: nextY + 7))
+                    star.append(Point(x: nextX + 29, y: nextY + 40))
+                    star.append(Point(x: nextX + 0, y: nextY + 25))
+                    star.append(Point(x: nextX - 29, y: nextY + 40))
+                    star.append(Point(x: nextX - 23, y: nextY + 7))
+                    star.append(Point(x: nextX - 47, y: nextY - 15))
+                    star.append(Point(x: nextX - 14, y: nextY - 20))
+                    canvas.drawCustomShape(with: star)
+                    
+                    // Set the "new" last point, now that the line is drawn
+                    
+                    lastPoint = nextPoint
+                    
+                }
                 
             }
             
+            
+            
+            
+            
         }
-            
-            
-      
-        
         
     }
-    
 }

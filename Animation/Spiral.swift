@@ -41,7 +41,14 @@ class Spiral: NSObject, Sketchable {
 
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
-
+       
+        let int = Int.random(in: 1...500)
+        let int2 = Int.random(in: 1...500)
+        let rainbow = Color(hue: int2, saturation: int, brightness: int, alpha: Int(int2))
+        
+        canvas.lineColor = rainbow
+        canvas.fillColor = rainbow
+        canvas.borderColor = rainbow
         // What frame are we on?
 //        print(canvas.frameCount)
         
@@ -53,6 +60,7 @@ class Spiral: NSObject, Sketchable {
         // Update the position of that one spiral
         for spiral in spirals {
             spiral.update(on: canvas)
+
         }
 
     

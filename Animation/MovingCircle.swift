@@ -73,7 +73,7 @@ class MovingCircle {
             dx = -1
             
         } else if x <= 0 {
-            dx = Int.random(in: -5...20)
+            dx = +1
             
         }  else if y >= canvas.height {
             dy = -1
