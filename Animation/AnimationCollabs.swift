@@ -70,7 +70,7 @@ class AnimationCollabs: NSObject, Sketchable {
     func draw() {
         
         canvas.drawShapesWithFill = true
-        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 10)
+        canvas.fillColor = Color(hue: 0, saturation: 100, brightness: 0, alpha: 50)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: 500, height: 500)
         canvas.defaultBorderWidth = 3
         

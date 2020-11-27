@@ -54,12 +54,13 @@ class FunctionArt3: NSObject, Sketchable {
         canvas.fillColor = Color(hue: 0,
                                  saturation: 0,
                                  brightness: 0,
-                                 alpha: 10)
+                                 alpha: 5)
         
         canvas.drawRectangle(at: Point(x: 0, y: 0),
                              width: canvas.width,
                              height: canvas.height)
 
+       
         // Set line width for paths
         canvas.defaultLineWidth = 1
         
@@ -77,3 +78,4 @@ class FunctionArt3: NSObject, Sketchable {
     }
 
 }
+// Copy right infringed tm mazal 9120413948301501385 dollras
