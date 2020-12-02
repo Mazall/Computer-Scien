@@ -71,7 +71,8 @@ class MovingCircle {
         // Draw the circle
         if drawCircle == true {
            // canvas.drawEllipse(at: Point(x: x, y: y), width: diameter, height: diameter)
-            
+            canvas.defaultBorderWidth = 15
+            canvas.defaultLineWidth = 10
             canvas.borderColor = rainbow
             
             var star: [Point] = []
