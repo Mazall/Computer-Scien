@@ -40,7 +40,7 @@ class LineFromCircles: NSObject, Sketchable {
             
             // Create new circle
             
-            let newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 125, drawCircle: false)
+            let newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 125, drawCircle: true)
             
             // Now add the new circle to the list
             circles.append(newCircle)

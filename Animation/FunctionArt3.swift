@@ -32,9 +32,9 @@ class FunctionArt3: NSObject, Sketchable {
             let newFunction = MathFunction(a: 50,
                                            k: 0.25,
                                            d: 0,
-                                           c: 100 * CGFloat(i),
+                                           c: CGFloat(i) * 5,
                                            canvas: canvas,
-                                           type: .yoAlien,
+                                           type: .reciprocal,
                                            shapeType: .star)
             
             // Add it to the list

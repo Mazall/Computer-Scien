@@ -26,7 +26,7 @@ class animation: NSObject, Sketchable {
         canvas = Canvas(width: 500, height: 500)
         
         
-        for _ in 1...200 {
+        for _ in 1...50 {
             
             // Randomly pick horizontal direction
             var dx = 1
@@ -40,7 +40,7 @@ class animation: NSObject, Sketchable {
             
             // Create new circle
             
-            let newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 20, drawCircle: false)
+            let newCircle = MovingCircle(x: Int.random(in: 0...canvas.width),y: Int.random(in: 0...canvas.height), dx: dx, dy: dy, diameter: 30, drawCircle: true)
             
             // Now add the new circle to the list
             circles.append(newCircle)

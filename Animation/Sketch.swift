@@ -25,8 +25,8 @@ class Sketch: NSObject {
 //    var currentDrawing = Spiral()
 //    var currentDrawing = FunctionArt1()
 //    var currentDrawing = FunctionArt2()
-//    var currentDrawing = AnimationCollabs()
 //    var currentDrawing = FunctionArt3()
+//    var currentDrawing = AnimationCollabs()
     var currentDrawing = animation()
 //    var currentDrawing = Loading()
 }
